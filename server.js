@@ -5,7 +5,6 @@ const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const productRoutes = require("./routes/productRoutes");
-const authRoutes = require("./routes/auth");
 
 const app = express();
 
@@ -30,7 +29,6 @@ app.use(limiter);
 
 // Routes
 app.use("/api/products", productRoutes);
-app.use("/api/auth", authRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

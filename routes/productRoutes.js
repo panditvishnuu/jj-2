@@ -7,11 +7,9 @@ const {
   deleteProduct,
 } = require("../controllers/productController");
 const { uploadImages } = require("../middleware/upload");
-const authenticate = require("../middleware/authenticate");
-const authorize = require("../middleware/authorize");
 
-router.post("/", authenticate, authorize("owner"), uploadImages, createProduct);
-router.get("/", authenticate, getAllProducts);
-router.delete("/:id", authenticate, authorize("owner"), deleteProduct);
+router.post("/", uploadImages, createProduct);
+router.get("/", getAllProducts);
+router.delete("/:id", deleteProduct);
 
 module.exports = router;
